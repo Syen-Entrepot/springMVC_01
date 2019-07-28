@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <!--配置注解扫描的包-->
+    <context:component-scan base-package="com.cn.controller"/>
+    <!--配置视图解析器
+
+    常用内部资源解析器
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--1.前缀-->
+        <property name="prefix" value="/jsp/"/>
+        <!--2.后缀-->
+        <property name="suffix" value=".jsp"/>
+
+
+    </bean>
+
+    <!--默认的servlet处理者,但只加这一个的话相当于全部都让它处理了所以要加上<mvc:annotation-driven/>-->
+    <mvc:default-servlet-handler/>
+    <mvc:annotation-driven/>
+
+    <!--通过映射关系描述，一，一比对编写规则（麻烦）-->
+    <!--<mvc:resources mapping="/static/css/*" location="static/css/"/>-->
+
+
+</beans>
